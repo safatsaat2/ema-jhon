@@ -13,12 +13,18 @@ const Shop = () => {
     }, [])
     useEffect(() =>{
         const idFromlocal = getShoppingCart();
+        const savedProduct = [];
         for(const id in idFromlocal){
           const addedProduct =  products.find(product => product.id === id);
-          const quantity = idFromlocal[id];
-          addedProduct.quantity = quantity
+          if(addedProduct){
+            const quantity = idFromlocal[id];
+            addedProduct.quantity = quantity;
+            savedProduct.push(addedProduct)
+          }
           console.log(addedProduct);
         }
+        setCart(savedProduct);
+
     }, [products])
 
     const [cart, setCart] = useState([])
