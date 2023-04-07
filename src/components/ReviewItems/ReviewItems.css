@@ -1,0 +1,15 @@
+.img{
+   border-radius: 8px; 
+   width: 91px;
+   height: 91px;
+}
+.div{
+    width: 571px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    padding: 8px;
+}
+.div h1{
+    font-size: 14px;
+}
