@@ -1,12 +1,27 @@
-.cart{
+.cart {
     background-color: rgba(255, 153, 0, 0.3);
     padding: 25px;
     position: sticky;
     top: 0;
 }
-.cart h3{
+
+.cart h3 {
     text-align: center;
 }
-.cart p{
+
+.cart p {
     font-size: 17px;
+}
+
+.btn-clear-cart {
+    width: 90%;
+    margin: 10px auto;
+    height: 56px;
+    font-size: 21px;
+    background: #FF3030;
+    border-radius: 4px;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
