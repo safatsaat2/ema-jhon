@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './SignUp.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../firebase/AuthProvider';
 
 const SignUp = () => {
+
+    const {createAccount} = useContext(AuthContext)
+
     const [error, setError] = useState("")
 
     const handleSignUp = event => {
@@ -11,6 +15,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
+        setError(" ")
         if(password !== confirm){
             setError("your password is not same")
             return
@@ -19,9 +24,14 @@ const SignUp = () => {
             setError("Your password should more longer")
             return
         }
-        else{
-            setError(" ")
-        }
+        createAccount(email, password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(err => {
+            setError(err)
+        })
+        
     }
 
 
