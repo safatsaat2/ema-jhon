@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../images/Logo.svg'
 import './Header.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../firebase/AuthProvider';
 
 const Header = () => {
+
+    const {user} = useContext(AuthContext)
     return (
         <div>
             <nav>
@@ -15,7 +18,9 @@ const Header = () => {
                         <Link to="/Manage-Inventory">Manage Inventory</Link>
                         <Link to="/Login">Login</Link>
                         <Link to="/SignUp">Sign Up</Link>
+                        {user && <span>Welcome {user.email}</span>}
                     </div>
+                    
                 </div>
             </nav>
         </div>
