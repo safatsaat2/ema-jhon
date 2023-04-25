@@ -29,7 +29,7 @@ const SignUp = () => {
             console.log(result.user)
         })
         .catch(err => {
-            setError(err)
+            setError(err.message)
         })
         
     }

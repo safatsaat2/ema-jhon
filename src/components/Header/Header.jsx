@@ -6,7 +6,16 @@ import { AuthContext } from '../../firebase/AuthProvider';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
+    const handleSignOut= () =>{
+        logOut()
+        .then(result=>{
+
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
     return (
         <div>
             <nav>
@@ -16,9 +25,9 @@ const Header = () => {
                         <Link to="/">Shop</Link>
                         <Link to="/Order-Review">Order Review</Link>
                         <Link to="/Manage-Inventory">Manage Inventory</Link>
-                        <Link to="/Login">Login</Link>
-                        <Link to="/SignUp">Sign Up</Link>
-                        {user && <span>Welcome {user.email}</span>}
+                        {user ? <span></span> : <Link to="/Login">Login</Link>}
+                        {user ? <span></span> : <Link to="/SignUp">Sign Up</Link>}
+                        {user && <span className='text-white'>Welcome {user.email} <button onClick={handleSignOut}>Sign Out</button></span>}
                     </div>
                     
                 </div>
