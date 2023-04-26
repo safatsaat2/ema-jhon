@@ -15,6 +15,7 @@ import Login from './components/Login/Login';
 import cartProductsLoaders from './Loaders/cartProductsLoaders';
 import SignUp from './components/SignUp/SignUp';
 import AuthProvider from './firebase/AuthProvider';
+import Checkout from './components/Checkout/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: 'Manage-Inventory',
         element: <Inventory></Inventory>
+      },
+      {
+        path:'/checkout',
+        element: <Checkout></Checkout>
       },
       {
         path: 'Login',
