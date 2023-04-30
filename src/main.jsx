@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'Manage-Inventory',
-        element: <Inventory></Inventory>
+        element: <PrivateRoute> <Inventory></Inventory></PrivateRoute>
       },
       {
         path:'/checkout',

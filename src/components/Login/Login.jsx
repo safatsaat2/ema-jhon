@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './Login.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../firebase/AuthProvider';
 
 const Login = () => {
@@ -8,7 +8,14 @@ const Login = () => {
     const{signIn} = useContext(AuthContext);
     const navigate = useNavigate()
 
+    const [show, setShow] = useState(true)
+
     const [error, setError] = useState("");
+
+    const location = useLocation();
+    console.log(location)
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogIn = event =>{
         event.preventDefault();
@@ -19,7 +26,7 @@ const Login = () => {
         .then(result=>{
             console.log(result.user)
             form.reset();
-            navigate('/')
+            navigate(from, {replace: true})
         })
         .catch(err => {
             setError(err.message)
@@ -37,7 +44,11 @@ const Login = () => {
                 </div>
                 <div className='form-control'>
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="" required />
+                    <input type={show ? "text" : "password"} name="password" id="" required />
+                    <button onClick={()=> setShow(!show)}>{
+                        show ? <p>hide password</p> : <p>show password</p>
+                    }</button>
+                    
                 </div>
                 <input className='btn-submit' type="submit" value="Login" />
             </form>
