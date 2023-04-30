@@ -16,6 +16,7 @@ import cartProductsLoaders from './Loaders/cartProductsLoaders';
 import SignUp from './components/SignUp/SignUp';
 import AuthProvider from './firebase/AuthProvider';
 import Checkout from './components/Checkout/Checkout';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/checkout',
-        element: <Checkout></Checkout>
+        element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
       },
       {
         path: 'Login',

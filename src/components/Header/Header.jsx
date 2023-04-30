@@ -10,7 +10,7 @@ const Header = () => {
     const handleSignOut= () =>{
         logOut()
         .then(result=>{
-
+            alert("Logged out")
         })
         .catch(err => {
             console.log(err)
